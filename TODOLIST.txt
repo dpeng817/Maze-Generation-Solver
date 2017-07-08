@@ -1,0 +1,26 @@
+TODOLIST
+Three Parts:
+	- Maze Generation
+	- Maze Processing
+	- Maze Solving
+
+1. Maze Generation
+	- Randomized Kruskal's Tree Spanning
+	- Randomized DFS
+	- Randomized Recursive Backtracking
+
+2. Maze Processing
+	- Convert maze into array representation, iterate through
+
+3. Maze Solving
+	- Wall Follower
+	- A*
+	- BFS
+
+Graphical User Interface:
+	- Dropdown for which algorithm to use for maze creation
+	- Text boxes for maze size
+
+Possible Future Improvements:
+	- Add maze recognition ML
+	- Maze solving ML, trained on mazes created by each of the different algorithms
