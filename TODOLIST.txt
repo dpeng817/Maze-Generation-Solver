@@ -24,3 +24,6 @@ Graphical User Interface:
 Possible Future Improvements:
 	- Add maze recognition ML
 	- Maze solving ML, trained on mazes created by each of the different algorithms
+
+-DFS: still not reaching all corners
+-Develop tool to convert to image
