@@ -3,13 +3,14 @@ import numpy as np
 from matplotlib import pyplot as plt
 import matplotlib.cm as cm
 import argparse
+import HelperFunctions
 
 #given length and width, generate maze with random depth-first walks
 def generate_maze(length,width):
 	#represents a single cell in maze
 	#directions represent 'walls':0 means wall is up, false means cell is not visited
 	#generate full maze of walled cells
-	maze=generate_blank_maze(length,width)
+	maze=HelperFunctions.generate_blank_maze(length,width)
 	row=0#represent row in grid of maze
 	col=0#represent column in grid of maze
 	stack=[]#stores locations we have visited but not backtracked to
@@ -54,46 +55,9 @@ def generate_maze(length,width):
 			row,col=stack.pop()
 	maze[0][0]['up']=1
 	maze[length-1][width-1]['right']=1
-	generate_image(maze,length,width)
+	HelperFunctions.generate_image(maze,length,width)
 
 
-#used image generation algorithm found on wikipedia
-def generate_image(maze,length,width):
-	#given finished maze, generate image
-	#generate image 10x the size of the actual maze for viewing purposes
-	image = np.zeros((length*10,width*10), dtype=np.uint8)
-	for row in range(0,length):
-		for col in range(0,width):
-			cellData=maze[row][col]
-			for i in range(10*row+1,10*row+9):
-				image[i,range(10*col+1,10*col+9)] = 255
-				if cellData['left']==1:
-					image[range(10*row+1,10*row+9),10*col] = 255
-				if cellData['up']==1:
-					image[10*row,range(10*col+1,10*col+9)] = 255
-				if cellData['right']==1:
-					image[range(10*row+1,10*row+9),10*col+9] = 255
-				if cellData['down']==1:
-					image[10*row+9,range(10*col+1,10*col+9)] = 255
-	# Display the image
-	plt.imshow(image, cmap = cm.Greys_r, interpolation='none')
-	plt.show()
-
-def generate_blank_maze(length,width):
-	result=[]
-	for r in range(0,length):
-		result.append([])
-		for c in range(0,width):
-			result[r].append(
-				{
-	'left':0,
-	'right':0,
-	'up':0,
-	'down':0,
-	'visited':False
-	}
-	)
-	return result
 
 
 parser=argparse.ArgumentParser(description='get dimensions')
